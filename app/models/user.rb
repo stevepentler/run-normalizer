@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+    has_many :workouts
 
   def self.find_or_create_by_auth(auth)
     user = User.find_or_create_by(provider: auth['provider'], user_id: auth['info']['id'])
@@ -11,7 +12,7 @@ class User < ActiveRecord::Base
     user.weight = auth['info']['weight']
     user.gender = auth['info']['gender']
     user.birthday = auth['info']['birthdate']
-    binding.pry
+    
     user.save
     return user 
   end
