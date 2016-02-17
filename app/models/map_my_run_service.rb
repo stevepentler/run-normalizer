@@ -30,13 +30,13 @@ class MapMyRunService
   end
 
   def distance(workout)
-    distance = aggregates(workout)['distance_total'] * (meter_to_mile)
+    distance = parse(workout)['distance_total'] * (meter_to_mile)
     distance.round(2)
   end
 
   def average_pace(workout)
-    if workout['aggregates']['speed_avg']
-      pace = aggregates(workout)['speed_avg'] * (miles_per_hour_conversion)
+    if parse(workout)['speed_avg']
+      pace = parse(workout)['speed_avg'] * (miles_per_hour_conversion)
       pace.round(2)
     else
       "N/A"
@@ -52,8 +52,8 @@ class MapMyRunService
   end
 
   def duration(workout)
-    if (workout['aggregates']['active_time_total'])
-      total_minutes = (aggregates(workout)['active_time_total'])*(0.01666667)
+    if parse(workout)['active_time_total']
+      total_minutes = (parse(workout)['active_time_total'])*(0.01666667)
       hours = (total_minutes / 60).to_i
       minutes = (total_minutes % 60).to_i
       return "#{hours}:#{minutes}"
@@ -67,8 +67,8 @@ class MapMyRunService
   end
 
   def calories(workout)
-    if (aggregates(workout)['metabolic_energy_total'])
-      calories = (aggregates(workout)['metabolic_energy_total']) 
+    if (parse(workout)['metabolic_energy_total'])
+      calories = (parse(workout)['metabolic_energy_total']) 
       kcals = (calories / metabolic_factor).to_i
     else
       "N/A"
@@ -79,7 +79,7 @@ class MapMyRunService
     workout["start_datetime"]
   end
 
-  def aggregates(workout)
+  def parse(workout)
     workout['aggregates']
   end
 
