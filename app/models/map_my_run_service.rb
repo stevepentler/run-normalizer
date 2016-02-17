@@ -37,4 +37,16 @@ class MapMyRunService
   def meter_to_mile
     (0.00062137119)
   end
+
+  def duration(workout)
+    if (workout['aggregates']['active_time_total'])
+      total_minutes = ((workout['aggregates']['active_time_total'])*(0.01666667))
+      hours = (total_minutes / 60).to_i
+      minutes = (total_minutes % 60).to_i
+      return "#{hours}:#{minutes}"
+    else 
+      "N/A"
+    end
+  end
+
 end
