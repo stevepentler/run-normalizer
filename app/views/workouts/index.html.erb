@@ -1,0 +1,9 @@
+<% @workout_methods.workouts.each do |workout| %>
+    <%#= binding.pry %> 
+  <p>Date: <%=@workout_methods.format_month(workout)%>-
+           <%=@workout_methods.format_day(workout) %>, 
+           <%= @workout_methods.format_year(workout) %></p>
+  <p>Distance: <%= @workout_methods.distance(workout) %> miles</p>
+  <p>Duration: <%= @workout_methods.duration(workout) %> minutes</p>
+
+<% end %> 

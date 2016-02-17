@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   #o-auth
   get '/auth/:provider/callback', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+
+  resources :workouts, except: [:destroy, :edit, :update]
 end
