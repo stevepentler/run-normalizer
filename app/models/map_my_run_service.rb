@@ -9,6 +9,14 @@ class MapMyRunService
     @workouts = data["_embedded"]["workouts"]
   end
 
+  # def workout_href
+  #   workouts["_links"]["self"]["href"]
+  # end
+
+  # def workout_id
+  #   workouts["_links"]["self"]["id"]
+  # end
+
   def format_year(workout)
     datetime(workout).split("-")[0]
   end
