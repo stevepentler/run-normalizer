@@ -68,8 +68,8 @@ class MapMyRunService
 
   def calories(workout)
     if (workout['aggregates']['metabolic_energy_total'])
-      cals = (workout['aggregates']['metabolic_energy_total']) 
-      kcals = (cals / metabolic_factor).to_i
+      calories = (workout['aggregates']['metabolic_energy_total']) 
+      kcals = (calories / metabolic_factor).to_i
     else
       "N/A"
     end
