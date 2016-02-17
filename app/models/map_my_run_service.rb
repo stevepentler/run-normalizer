@@ -10,33 +10,33 @@ class MapMyRunService
   end
 
   def format_year(workout)
-    workout["start_datetime"].split("-")[0]
+    datetime(workout).split("-")[0]
   end
 
   def format_month(workout)
-    workout["start_datetime"].split("-")[1]
+    datetime(workout).split("-")[1]
   end
 
   def format_day(workout)
-    workout["start_datetime"][8..9]
+    datetime(workout)[8..9]
   end
 
   def format_hour(workout)
-    workout["start_datetime"].split("T")[1].split(":")[0]
+    datetime(workout).split("T")[1].split(":")[0]
   end
 
   def format_minute(workout)
-    workout["start_datetime"].split("T")[1].split(":")[1]
+    datetime(workout).split("T")[1].split(":")[1]
   end
 
   def distance(workout)
-    distance = workout['aggregates']['distance_total'] * (meter_to_mile)
+    distance = aggregates(workout)['distance_total'] * (meter_to_mile)
     distance.round(2)
   end
 
   def average_pace(workout)
     if workout['aggregates']['speed_avg']
-      pace = workout['aggregates']['speed_avg'] * (miles_per_hour_conversion)
+      pace = aggregates(workout)['speed_avg'] * (miles_per_hour_conversion)
       pace.round(2)
     else
       "N/A"
@@ -53,7 +53,7 @@ class MapMyRunService
 
   def duration(workout)
     if (workout['aggregates']['active_time_total'])
-      total_minutes = ((workout['aggregates']['active_time_total'])*(0.01666667))
+      total_minutes = (aggregates(workout)['active_time_total'])*(0.01666667)
       hours = (total_minutes / 60).to_i
       minutes = (total_minutes % 60).to_i
       return "#{hours}:#{minutes}"
@@ -67,12 +67,20 @@ class MapMyRunService
   end
 
   def calories(workout)
-    if (workout['aggregates']['metabolic_energy_total'])
-      calories = (workout['aggregates']['metabolic_energy_total']) 
+    if (aggregates(workout)['metabolic_energy_total'])
+      calories = (aggregates(workout)['metabolic_energy_total']) 
       kcals = (calories / metabolic_factor).to_i
     else
       "N/A"
     end
+  end
+
+  def datetime(workout)
+    workout["start_datetime"]
+  end
+
+  def aggregates(workout)
+    workout['aggregates']
   end
 
 end

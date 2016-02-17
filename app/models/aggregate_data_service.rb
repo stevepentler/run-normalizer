@@ -14,6 +14,11 @@ class AggregateDataService
     miles = (meters * meter_to_mile).to_i
   end
 
+  def aggregate_calories
+    calories = parser(1, "energy_expended_sum")
+    kcals = (calories / metabolic_factor).to_i
+  end
+
   def aggregate_steps
     sessions = parser(2, "steps_sum")
   end
@@ -28,11 +33,6 @@ class AggregateDataService
 
   def meter_to_mile
     (0.00062137119)
-  end
-
-  def aggregate_calories
-    calories = parser(1, "energy_expended_sum")
-    kcals = (calories / metabolic_factor).to_i
   end
 
   def metabolic_factor
