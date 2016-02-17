@@ -1,9 +1,7 @@
-<div class="container-fluid container-home">
-  <div class="col-md-2"></div>
-  <div class="col-md-8">
-    <h1 class="home">You Are Authorized</h1>
-    <h2 class="home"> <%= current_user.display_name %></h2>
-    <h2 class="home"> <%= current_user.email %></h2>
+<div class="container">
+    <h1 class="center">You Are Authorized</h1>
+    <h2 class="center"> <%= current_user.display_name %></h2>
+    <h2 class="center"> <%= current_user.email %></h2>
     <%= link_to "Logout", "/logout", method: :delete, class: "btn btn-lg btn-default btn-home" %>
     <%= link_to "View Workouts", workouts_path %>
     <%#= link_to "View Workouts", "/workouts", class: "btn btn-lg btn-default btn-home" %>
