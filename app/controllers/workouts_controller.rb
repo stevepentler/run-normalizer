@@ -1,7 +1,6 @@
-class WorkoutController
+class WorkoutsController < ApplicationController
   def index
-    binding.pry
-    @workouts = MapMyRunService.new(current_user).workouts
+    @workout_methods = MapMyRunService.new(current_user)
   end
 
   def show

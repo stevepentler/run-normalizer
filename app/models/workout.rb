@@ -1,10 +1,3 @@
-class Workout < ActiveRecord::Base
+class Workout
   belongs_to :user
-
-  @workouts = MapMyRunService.new(current_user)
-
-  def format_date(workouts)
-    binding.pry
-    
-  end
 end

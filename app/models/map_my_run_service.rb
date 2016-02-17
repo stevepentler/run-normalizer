@@ -9,4 +9,32 @@ class MapMyRunService
     @workouts = data["_embedded"]["workouts"]
   end
 
+  def format_year(workout)
+    workout["start_datetime"].split("-")[0]
+  end
+
+  def format_month(workout)
+    workout["start_datetime"].split("-")[1]
+  end
+
+  def format_day(workout)
+    workout["start_datetime"][8..9]
+  end
+
+  def format_hour(workout)
+    workout["start_datetime"].split("T")[1].split(":")[0]
+  end
+
+  def format_minute(workout)
+    workout["start_datetime"].split("T")[1].split(":")[1]
+  end
+
+  def distance(workout)
+    distance = workout['aggregates']['distance_total'] * (meter_to_mile)
+    distance.round(2)
+  end
+
+  def meter_to_mile
+    (0.00062137119)
+  end
 end
