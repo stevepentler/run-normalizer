@@ -39,7 +39,7 @@ class MapMyRunService
       pace = workout['aggregates']['speed_avg'] * (miles_per_hour_conversion)
       pace.round(2)
     else
-      "N/A"
+      "Unavailable"
     end
   end
 
@@ -58,7 +58,20 @@ class MapMyRunService
       minutes = (total_minutes % 60).to_i
       return "#{hours}:#{minutes}"
     else 
-      "N/A"
+      "Unavailable"
+    end
+  end
+
+  def metabolic_factor
+    (4196)
+  end
+
+  def calories(workout)
+    if (workout['aggregates']['metabolic_energy_total'])
+      cals = (workout['aggregates']['metabolic_energy_total']) 
+      kcals = (cals / metabolic_factor).to_i
+    else
+      "Unavailable"
     end
   end
 
