@@ -34,8 +34,21 @@ class MapMyRunService
     distance.round(2)
   end
 
+  def average_pace(workout)
+    if workout['aggregates']['speed_avg']
+      pace = workout['aggregates']['speed_avg'] * (miles_per_hour_conversion)
+      pace.round(2)
+    else
+      "N/A"
+    end
+  end
+
   def meter_to_mile
     (0.00062137119)
+  end
+
+  def miles_per_hour_conversion
+    (2.23694)
   end
 
   def duration(workout)
