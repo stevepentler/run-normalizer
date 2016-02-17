@@ -7,11 +7,7 @@ class AggregateDataService
     response = connection.get("https://oauth2-api.mapmyapi.com/v7.1/aggregate/?data_types=distance_summary%2C+energy_expended_summary%2C+steps_summary%2C+sessions_summary&end_datetime=2020-05-05&period=P1D&start_datetime=2000-05-05&user_id=#{current_user.user_id}")
     data = JSON.parse(response.body)
     @aggregate_data = data
-
-    # @aggregate_data = fetch_aggregate_data
   end
-
-  # def fetch_aggregate_data()
 
   def aggregate_distance
     meters = parser(0, "distance_sum")

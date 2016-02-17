@@ -1,7 +1,7 @@
 class WorkoutsController < ApplicationController
   def index
-    @methods = MapMyRunService.new(current_user)
-    @workouts = MapMyRunService.new(current_user).workouts
+    @methods = WorkoutService.new(current_user)
+    @workouts = @methods.workouts
   end
 
   def show

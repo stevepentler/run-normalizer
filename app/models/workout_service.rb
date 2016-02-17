@@ -1,4 +1,4 @@
-class MapMyRunService
+class WorkoutService
   attr_reader :workouts
   
   def initialize(current_user)
@@ -8,14 +8,6 @@ class MapMyRunService
     data = JSON.parse(response.body)
     @workouts = data["_embedded"]["workouts"]
   end
-
-  # def workout_href
-  #   workouts["_links"]["self"]["href"]
-  # end
-
-  # def workout_id
-  #   workouts["_links"]["self"]["id"]
-  # end
 
   def format_year(workout)
     datetime(workout).split("-")[0]
@@ -51,14 +43,6 @@ class MapMyRunService
     end
   end
 
-  def meter_to_mile
-    (0.00062137119)
-  end
-
-  def miles_per_hour_conversion
-    (2.23694)
-  end
-
   def duration(workout)
     if parse(workout)['active_time_total']
       total_minutes = (parse(workout)['active_time_total'])*(0.01666667)
@@ -68,10 +52,6 @@ class MapMyRunService
     else 
       "N/A"
     end
-  end
-
-  def metabolic_factor
-    (4196)
   end
 
   def calories(workout)
@@ -91,4 +71,15 @@ class MapMyRunService
     workout['aggregates']
   end
 
+  def meter_to_mile
+    (0.00062137119)
+  end
+
+  def miles_per_hour_conversion
+    (2.23694)
+  end
+
+  def metabolic_factor
+    (4196)
+  end
 end
