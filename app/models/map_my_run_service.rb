@@ -8,4 +8,5 @@ class MapMyRunService
     data = JSON.parse(response.body)
     @workouts = data["_embedded"]["workouts"]
   end
+
 end

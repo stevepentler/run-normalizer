@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
     user.weight = auth['info']['weight']
     user.gender = auth['info']['gender']
     user.birthday = auth['info']['birthdate']
-    
+
     user.save
     return user 
   end
