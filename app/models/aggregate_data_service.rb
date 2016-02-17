@@ -10,8 +10,20 @@ class AggregateDataService
   end
 
   def aggregate_distance
-    meters = aggregate_data["_embedded"]["aggregates"][0]["summary"]["value"]["distance_sum"]
+    meters = parser(0, "distance_sum")
     miles = (meters * meter_to_mile).to_i
+  end
+
+  def aggregate_steps
+    sessions = parser(2, "steps_sum")
+  end
+
+  def aggregate_sessions
+    sessions = parser(3, "sessions_sum")
+  end
+
+  def parser(element, category)
+    aggregate_data["_embedded"]["aggregates"][element]["summary"]["value"][category]
   end
 
   def meter_to_mile
@@ -19,7 +31,7 @@ class AggregateDataService
   end
 
   def aggregate_calories
-    calories = aggregate_data["_embedded"]["aggregates"][1]["summary"]["value"]["energy_expended_sum"]
+    calories = parser(1, "energy_expended_sum")
     kcals = (calories / metabolic_factor).to_i
   end
 
@@ -27,11 +39,4 @@ class AggregateDataService
     (4196)
   end
 
-  def aggregate_steps
-    steps = aggregate_data["_embedded"]["aggregates"][2]["summary"]["value"]["steps_sum"]
-  end
-
-  def aggregate_sessions
-    aggregate_data["_embedded"]["aggregates"][3]["summary"]["value"]["sessions_sum"]
-  end
 end
