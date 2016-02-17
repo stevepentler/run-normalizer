@@ -1,13 +1,28 @@
-<% @workout_methods.workouts.each do |workout| %>
-  <p>Date: <%=@workout_methods.format_month(workout)%>-
-           <%=@workout_methods.format_day(workout) %>, 
-           <%= @workout_methods.format_year(workout) %></p>
-  <p>Started at: <%= @workout_methods.format_hour(workout) %>:<%= @workout_methods.format_minute(workout) %></p>
-  <p>Distance: <%= @workout_methods.distance(workout) %> miles</p>
-  <p>Duration: <%= @workout_methods.duration(workout) %> minutes</p>
-  <p>Pace: <%= @workout_methods.average_pace(workout) %> mph</p>
-  <p>Calories: <%= @workout_methods.calories(workout) %> calories</p>
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+          <th data-field="Date">Date</th>
+          <th data-field="Started-At">Started At</th>
+          <th data-field="Distance">Distance</th>
+          <th data-field="Duration">Duration</th>
+          <th data-field="Pace">Pace</th>
+          <th data-field="Calories">Calories</th>
+      </tr>
+    </thead>
 
-
-
-<% end %> 
+    <tbody>
+      <% @workout_methods.workouts.each do |workout| %>
+        <tr>
+          <td><%= @workout_methods.format_month(workout)%>-<%= @workout_methods.format_day(workout) %>, 
+             <%= @workout_methods.format_year(workout) %></td>
+          <td><%= @workout_methods.format_hour(workout) %>hrs <%= @workout_methods.format_minute(workout) %> mins</td>
+          <td><%= @workout_methods.distance(workout) %> miles</td>
+          <td><%= @workout_methods.duration(workout) %></td>
+          <td><%= @workout_methods.average_pace(workout) %>mph</td>
+          <td><%= @workout_methods.calories(workout) %> calories</td>
+        </tr>
+      <% end %> 
+    </tbody>
+  </table>
+</div>
