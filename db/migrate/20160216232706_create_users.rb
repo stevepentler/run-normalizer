@@ -9,8 +9,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :username
       t.string :display_name
       t.string :state
-      t.integer :height
-      t.integer :weight
+      t.float :height
+      t.float :weight
       t.string :gender
       t.string :birthday
 

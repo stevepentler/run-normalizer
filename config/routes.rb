@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'dashboard#show'
   #o-auth
   get '/auth/:provider/callback', to: 'sessions#create'
-  delete '/auth/:provider/callback', to: 'sessions#destroy'
+  delete '/logout', to: 'sessions#destroy'
 end
