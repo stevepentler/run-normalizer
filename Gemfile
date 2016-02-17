@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'figaro'
 gem 'omniauth-mapmyfitness-oauth2'
 gem 'bootstrap-sass'
+gem 'faraday'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
