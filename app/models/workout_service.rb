@@ -4,7 +4,7 @@ class WorkoutService
   def initialize(current_user)
     connection = Faraday.new
     connection.headers = {"User-Agent"=>"Faraday v0.9.2", "Api-Key" => ENV['MMF_API_KEY'], "Authorization" => ENV['AUTH_KEY']}
-    response = connection.get("https://oauth2-api.mapmyapi.com/v7.1/workout/?user=#{current_user.user_id}")
+    response = connection.get(workouts_path(current_user))
     data = JSON.parse(response.body)
     @workouts = data["_embedded"]["workouts"]
   end
@@ -61,6 +61,10 @@ class WorkoutService
     else
       "N/A"
     end
+  end
+
+  def workouts_path(current_user)
+    "https://oauth2-api.mapmyapi.com/v7.1/workout/?user=#{current_user.user_id}"
   end
 
   def datetime(workout)
