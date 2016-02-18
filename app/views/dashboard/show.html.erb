@@ -1,8 +1,8 @@
 <div class="container center">
-    <h5>Total Distance: <%= @aggregate_data.aggregate_distance %> miles</h5>
-    <h5>Total Calories: <%= @aggregate_data.aggregate_calories %> calories</h5>
-    <h5>Total Steps: <%= @aggregate_data.aggregate_steps %> steps</h5>
-    <h5>Total Sessions: <%= @aggregate_data.aggregate_sessions %> sessions</h5>
+    <h5>Total Distance: <%= @methods.aggregate_distance %> miles</h5>
+    <h5>Total Calories: <%= @methods.aggregate_calories %> calories</h5>
+    <h5>Total Steps: <%= @methods.aggregate_steps %> steps</h5>
+    <h5>Total Sessions: <%= @methods.aggregate_sessions %> sessions</h5>
     <%= link_to "View Workouts", workouts_path, class: "btn btn-lg btn-default btn-home" %>
     <h2 class="center"> <%= current_user.display_name %></h2>
     <h2 class="center"> <%= current_user.email %></h2>

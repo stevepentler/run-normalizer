@@ -17,7 +17,7 @@
       <% @workouts.each do |workout| %>
         <tr>
           <td><%= @methods.format_month(workout)%>-<%= @methods.format_day(workout) %>, 
-             <%= @methods.format_year(workout) %></td>
+              <%= @methods.format_year(workout) %></td>
           <td><%= @methods.format_hour(workout) %>:<%= @methods.format_minute(workout) %></td>
           <td><%= @methods.distance(workout) %> miles</td>
           <td><%= @methods.duration(workout) %></td>
