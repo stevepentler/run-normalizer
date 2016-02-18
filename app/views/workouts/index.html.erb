@@ -14,16 +14,15 @@
 
     <tbody>
       <% @workouts.each do |workout| %>
-        <%#= @methods.workout_id %>
-          <tr>
-            <td><%= @methods.format_month(workout)%>-<%= @methods.format_day(workout) %>, 
-               <%= @methods.format_year(workout) %></td>
-            <td><%= @methods.format_hour(workout) %>hrs <%= @methods.format_minute(workout) %> mins</td>
-            <td><%= @methods.distance(workout) %> miles</td>
-            <td><%= @methods.duration(workout) %></td>
-            <td><%= @methods.average_pace(workout) %>mph</td>
-            <td><%= @methods.calories(workout) %> calories</td>
-          </tr>
+        <tr>
+          <td><%= @methods.format_month(workout)%>-<%= @methods.format_day(workout) %>, 
+             <%= @methods.format_year(workout) %></td>
+          <td><%= @methods.format_hour(workout) %>hrs <%= @methods.format_minute(workout) %> mins</td>
+          <td><%= @methods.distance(workout) %> miles</td>
+          <td><%= @methods.duration(workout) %></td>
+          <td><%= @methods.average_pace(workout) %> mph</td>
+          <td><%= @methods.calories(workout) %> calories</td>
+        </tr>
       <% end %> 
     </tbody>
   </table>

@@ -3,7 +3,7 @@ class WorkoutService
   
   def initialize(current_user)
     connection = Faraday.new
-    connection.headers = {"User-Agent"=>"Faraday v0.9.2", "Api-Key" => ENV['MMF_API_KEY'], "Authorization" => "Bearer 258be676eee8b7b05488cc158b25ad2e6cdfd46d"}
+    connection.headers = {"User-Agent"=>"Faraday v0.9.2", "Api-Key" => ENV['MMF_API_KEY'], "Authorization" => ENV['AUTH_KEY']}
     response = connection.get("https://oauth2-api.mapmyapi.com/v7.1/workout/?user=#{current_user.user_id}")
     data = JSON.parse(response.body)
     @workouts = data["_embedded"]["workouts"]
@@ -48,7 +48,7 @@ class WorkoutService
       total_minutes = (parse(workout)['active_time_total'])*(0.01666667)
       hours = (total_minutes / 60).to_i
       minutes = (total_minutes % 60).to_i
-      return "#{hours}:#{minutes}"
+      return "#{hours}hr #{minutes}mins"
     else 
       "N/A"
     end
