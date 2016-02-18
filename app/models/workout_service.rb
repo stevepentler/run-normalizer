@@ -11,12 +11,22 @@ class WorkoutService
     distance.round(2)
   end
 
-  def average_pace(workout)
+  def average_speed(workout)
     if parse(workout)['speed_avg']
       pace = parse(workout)['speed_avg'] * (miles_per_hour_conversion)
       pace.round(2)
     else
       "N/A"
+    end
+  end
+
+  def average_pace(workout)
+    if average_speed(workout) == "N/A"
+      "N/A"
+    else
+      minutes = (60.0 / average_speed(workout)).to_i
+      seconds = (((60.0 / average_speed(workout).to_i) - minutes) * 60).to_i
+      "#{minutes}:#{seconds}"
     end
   end
 
