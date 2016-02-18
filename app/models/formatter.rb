@@ -11,6 +11,14 @@ module Formatter
     (4196)
   end
 
+  def format_pace(minutes, seconds)
+    if seconds < 10
+      "#{minutes}:0#{seconds}"
+    else
+      "#{minutes}:#{seconds}"
+    end
+  end
+
   def format_year(workout)
     datetime(workout).split("-")[0]
   end
@@ -24,7 +32,7 @@ module Formatter
   end
 
   def format_hour(workout)
-    datetime(workout).split("T")[1].split(":")[0]
+    hour = (datetime(workout).split("T")[1].split(":")[0]).to_i
   end
 
   def format_minute(workout)
