@@ -2,31 +2,7 @@ class WorkoutService
   attr_reader :workouts
   
   def initialize(current_user)
-    connection = Faraday.new
-    connection.headers = headers
-    response = connection.get(workouts_path(current_user))
-    data = JSON.parse(response.body)
-    @workouts = data["_embedded"]["workouts"]
-  end
-
-  def format_year(workout)
-    datetime(workout).split("-")[0]
-  end
-
-  def format_month(workout)
-    datetime(workout).split("-")[1]
-  end
-
-  def format_day(workout)
-    datetime(workout)[8..9]
-  end
-
-  def format_hour(workout)
-    datetime(workout).split("T")[1].split(":")[0]
-  end
-
-  def format_minute(workout)
-    datetime(workout).split("T")[1].split(":")[1]
+    @workouts = workouts_for(current_user)
   end
 
   def distance(workout)
@@ -63,14 +39,6 @@ class WorkoutService
     end
   end
 
-  def workouts_path(current_user)
-    "https://oauth2-api.mapmyapi.com/v7.1/workout/?user=#{current_user.user_id}"
-  end
-
-  def headers
-    {"User-Agent"=>"Faraday v0.9.2", "Api-Key" => ENV['MMF_API_KEY'], "Authorization" => ENV['AUTH_KEY']}
-  end
-
   def datetime(workout)
     workout["start_datetime"]
   end
@@ -90,4 +58,43 @@ class WorkoutService
   def metabolic_factor
     (4196)
   end
+
+  def format_year(workout)
+    datetime(workout).split("-")[0]
+  end
+
+  def format_month(workout)
+    datetime(workout).split("-")[1]
+  end
+
+  def format_day(workout)
+    datetime(workout)[8..9]
+  end
+
+  def format_hour(workout)
+    datetime(workout).split("T")[1].split(":")[0]
+  end
+
+  def format_minute(workout)
+    datetime(workout).split("T")[1].split(":")[1]
+  end
+
+  private
+
+  def workouts_for(current_user)
+    connection = Faraday.new
+    connection.headers = headers
+    response = connection.get(workouts_path(current_user))
+    data = JSON.parse(response.body)
+    data["_embedded"]["workouts"]
+  end
+
+  def workouts_path(current_user)
+    "https://oauth2-api.mapmyapi.com/v7.1/workout/?user=#{current_user.user_id}"
+  end
+
+  def headers
+    {"User-Agent"=>"Faraday v0.9.2", "Api-Key" => ENV['MMF_API_KEY'], "Authorization" => ENV['AUTH_KEY']}
+  end
+
 end
