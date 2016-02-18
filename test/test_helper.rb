@@ -6,5 +6,15 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+  OmniAuth.config.test_mode = true
+  omniauth_hash = { 'provider' => 'mapmyfitness',
+                    'user_id'  => ENV['USER_ID'],
+                    'info' => {
+                        'email' => ENV['USER_EMAIL'],
+                        'username' => 'pentler',
+                        'display_name' => 'steven pentler'
+                    }
+  }
+
+  OmniAuth.config.add_mock(:mapmyfitness, omniauth_hash)
 end

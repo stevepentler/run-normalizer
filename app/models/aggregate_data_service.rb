@@ -1,4 +1,5 @@
 class AggregateDataService
+  include Formatter
   attr_reader :aggregate_data
   
   def initialize(current_user)
@@ -25,14 +26,6 @@ class AggregateDataService
 
   def parser(element, category)
     aggregate_data["_embedded"]["aggregates"][element]["summary"]["value"][category]
-  end
-
-  def meter_to_mile
-    (0.00062137119)
-  end
-
-  def metabolic_factor
-    (4196)
   end
 
   private
