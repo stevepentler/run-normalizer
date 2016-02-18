@@ -1,10 +1,10 @@
 class AggregateDataService
   include Formatter
-  attr_reader :aggregate_data
+  # attr_reader :aggregate_data
   
-  def initialize(current_user)
-    @aggregate_data = aggregate_data_for(current_user)
-  end
+  # def initialize(current_user)
+  #   @aggregate_data = aggregate_data_for(current_user)
+  # end
 
   def aggregate_distance
     meters = parser(0, "distance_sum")
@@ -28,17 +28,29 @@ class AggregateDataService
     aggregate_data["_embedded"]["aggregates"][element]["summary"]["value"][category]
   end
 
-  private
+  # attr_reader :aggregate_data
+  
+  # def initialize(current_user)
+  #   @aggregate_data = aggregate_data_for(current_user)
+  # end
+
+  attr_reader :connection, :aggregate_data
+
+    def initialize(current_user)
+      @connection = Faraday.new("https://oauth2-api.mapmyapi.com/v7.1/") do |faraday|
+        faraday.headers = headers
+        faraday.adapter Faraday.default_adapter
+      end
+      @aggregate_data = aggregate_data_for(current_user)
+    end
 
   def aggregate_data_for(current_user)
-    connection = Faraday.new
-    connection.headers = headers
     response = connection.get(aggregate_data_path(current_user))
     data = JSON.parse(response.body)
   end
 
   def aggregate_data_path(current_user)
-    "https://oauth2-api.mapmyapi.com/v7.1/aggregate/?data_types=distance_summary%2C+energy_expended_summary%2C+steps_summary%2C+sessions_summary&end_datetime=2020-05-05&period=P1D&start_datetime=2000-05-05&user_id=#{current_user.user_id}"
+    "aggregate/?data_types=distance_summary%2C+energy_expended_summary%2C+steps_summary%2C+sessions_summary&end_datetime=2020-05-05&period=P1D&start_datetime=2000-05-05&user_id=#{current_user.user_id}"
   end
 
   def headers

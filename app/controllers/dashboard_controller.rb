@@ -1,5 +1,6 @@
 class DashboardController < ApplicationController
   def show
-    @aggregate_data = AggregateDataService.new(current_user)
+    @methods = AggregateDataService.new(current_user)
+    @aggregate_data = AggregateDataService.new(current_user).aggregate_data_for(current_user)
   end
 end

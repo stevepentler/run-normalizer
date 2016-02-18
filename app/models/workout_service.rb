@@ -1,10 +1,10 @@
 class WorkoutService
   include Formatter
-  attr_reader :workouts
+  # attr_reader :workouts
   
-  def initialize(current_user)
-    @workouts = workouts_for(current_user)
-  end
+  # def initialize(current_user)
+  #   @workouts = workouts_for(current_user)
+  # end
 
   def distance(workout)
     distance = parse(workout)['distance_total'] * (meter_to_mile)
@@ -50,19 +50,35 @@ class WorkoutService
     end
   end
 
-  private
+  attr_reader :connection
 
-  def workouts_for(current_user)
-    connection = Faraday.new
-    connection.headers = headers
-    response = connection.get(workouts_path(current_user))
-    data = JSON.parse(response.body)
-    data["_embedded"]["workouts"]
+    def initialize
+      @connection = Faraday.new("https://oauth2-api.mapmyapi.com/v7.1/") do |faraday|
+        faraday.headers = headers
+        faraday.adapter Faraday.default_adapter
+      end
+    end
+  # def initialize(current_user)
+  #   @workouts = workouts_for(current_user)
+  # end
+
+  # def workouts_for(current_user)
+  #   # connection = Faraday.new
+  #   # connection.headers = headers
+  #   response = connection.get(workouts_path(current_user))
+  #   data = JSON.parse(response.body)
+  #   data["_embedded"]["workouts"]
+  # end
+
+    def workouts_for(current_user)
+      response = connection.get("workout/?user=#{current_user.user_id}", headers)
+      data = JSON.parse(response.body)
+      data["_embedded"]["workouts"]
   end
 
-  def workouts_path(current_user)
-    "https://oauth2-api.mapmyapi.com/v7.1/workout/?user=#{current_user.user_id}"
-  end
+  # def workouts_path(current_user)
+  #   "https://oauth2-api.mapmyapi.com/v7.1/workout/?user=#{current_user.user_id}"
+  # end
 
   def headers
     {"User-Agent"=>"Faraday v0.9.2", "Api-Key" => ENV['MMF_API_KEY'], "Authorization" => ENV['AUTH_KEY']}
