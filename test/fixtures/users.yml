@@ -1,19 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  user_id: MyString
-  username: MyString
-  email: MyString
-  display_name: MyString
-  state: MyString
-  height: MyString
-  weight: MyString
-
-two:
-  user_id: MyString
-  username: MyString
-  email: MyString
-  display_name: MyString
-  state: MyString
-  height: MyString
-  weight: MyString
+steve:
+  user_id: 8695588
+  username: pentler
+  email: stevepentler@gmail.com
+  display_name: steve pentler
+  provider: mapmyfitness
+  state: WI
+  height: 1.8542
+  weight: 78.017
+  token: 258be676eee8b7b05488cc158b25ad2e6cdfd46d
+  gender: M
+  birthday: 1991-05-23

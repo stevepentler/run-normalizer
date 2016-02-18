@@ -7,6 +7,7 @@ gem 'bootstrap-sass'
 gem 'will_paginate',           '~> 3.0.6'
 gem 'will_paginate-materialize'
 
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use postgresql as the database for Active Record
@@ -41,6 +42,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry'
+  # gem 'webmock'
+  gem 'vcr'
+  gem 'minitest-vcr'
 end
 
 group :development do
