@@ -7,7 +7,8 @@
           <th data-field="Started-At">Started At</th>
           <th data-field="Distance">Distance</th>
           <th data-field="Duration">Duration</th>
-          <th data-field="Pace">Pace</th>
+          <th data-field="Avg-Speed">Avg-Speed</th>
+          <th data-field="Avg-Pace">Avg-Pace</th>
           <th data-field="Calories">Calories</th>
       </tr>
     </thead>
@@ -20,7 +21,8 @@
           <td><%= @methods.format_hour(workout) %>hrs <%= @methods.format_minute(workout) %> mins</td>
           <td><%= @methods.distance(workout) %> miles</td>
           <td><%= @methods.duration(workout) %></td>
-          <td><%= @methods.average_pace(workout) %> mph</td>
+          <td><%= @methods.average_speed(workout) %> mph</td>
+          <td><%= @methods.average_pace(workout) %></td>
           <td><%= @methods.calories(workout) %> calories</td>
         </tr>
       <% end %> 
