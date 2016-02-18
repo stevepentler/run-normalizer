@@ -40,10 +40,6 @@ class WorkoutService
     end
   end
 
-  def parse(workout)
-    workout['aggregates']
-  end
-
   private
 
   def workouts_for(current_user)
@@ -60,6 +56,10 @@ class WorkoutService
 
   def headers
     {"User-Agent"=>"Faraday v0.9.2", "Api-Key" => ENV['MMF_API_KEY'], "Authorization" => ENV['AUTH_KEY']}
+  end
+
+  def parse(workout)
+    workout['aggregates']
   end
 
 end
