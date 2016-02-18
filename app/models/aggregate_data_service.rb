@@ -1,11 +1,16 @@
 class AggregateDataService
   include Formatter
-  # attr_reader :aggregate_data
-  
-  # def initialize(current_user)
-  #   @aggregate_data = aggregate_data_for(current_user)
-  # end
 
+  attr_reader :connection, :aggregate_data
+
+  def initialize(current_user)
+    @connection = Faraday.new("https://oauth2-api.mapmyapi.com/v7.1/") do |faraday|
+      faraday.headers = headers
+      faraday.adapter Faraday.default_adapter
+    end
+    @aggregate_data = aggregate_data_for(current_user)
+  end
+  
   def aggregate_distance
     meters = parser(0, "distance_sum")
     miles = (meters * meter_to_mile).to_i
@@ -24,29 +29,15 @@ class AggregateDataService
     sessions = parser(3, "sessions_sum")
   end
 
-  def parser(element, category)
-    aggregate_data["_embedded"]["aggregates"][element]["summary"]["value"][category]
-  end
-
-  # attr_reader :aggregate_data
-  
-  # def initialize(current_user)
-  #   @aggregate_data = aggregate_data_for(current_user)
-  # end
-
-  attr_reader :connection, :aggregate_data
-
-    def initialize(current_user)
-      @connection = Faraday.new("https://oauth2-api.mapmyapi.com/v7.1/") do |faraday|
-        faraday.headers = headers
-        faraday.adapter Faraday.default_adapter
-      end
-      @aggregate_data = aggregate_data_for(current_user)
-    end
-
   def aggregate_data_for(current_user)
     response = connection.get(aggregate_data_path(current_user))
     data = JSON.parse(response.body)
+  end
+
+  private
+
+  def parser(element, category)
+    aggregate_data["_embedded"]["aggregates"][element]["summary"]["value"][category]
   end
 
   def aggregate_data_path(current_user)
