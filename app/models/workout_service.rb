@@ -25,8 +25,12 @@ class WorkoutService
       "N/A"
     else
       minutes = (60.0 / average_speed(workout)).to_i
-      seconds = (((60.0 / average_speed(workout).to_i) - minutes) * 60).to_i
-      "#{minutes}:#{seconds}"
+      seconds = ((60.0 / average_speed(workout) - minutes) * 60).to_i
+      if seconds < 10
+        "#{minutes}:0#{seconds}"
+      else
+        "#{minutes}:#{seconds}"
+      end
     end
   end
 
