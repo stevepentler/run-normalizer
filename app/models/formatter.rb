@@ -32,7 +32,7 @@ module Formatter
   end
 
   def format_hour(workout)
-    hour = (datetime(workout).split("T")[1].split(":")[0]).to_i
+    hour = (datetime(workout).split("T")[1].split(":")[0])
   end
 
   def format_minute(workout)
