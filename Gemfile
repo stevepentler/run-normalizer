@@ -29,5 +29,7 @@ group :test do
   gem 'webmock'
   gem 'vcr'
   gem 'minitest-vcr'
+  gem 'launchy'
+  gem 'capybara'
 end
 
