@@ -33,10 +33,6 @@ class WorkoutService
     end
   end
 
-  # def route(current_user)
-  #   route = workouts_for(current_user)
-  # end
-
   def duration(workout)
     if parse(workout)['active_time_total']
       total_minutes = (parse(workout)['active_time_total'])*(0.01666667)
@@ -85,8 +81,4 @@ class WorkoutService
     workout["_links"]["route"][0]["id"]
   end
 
-  # def get_my_routes_and_courses(workout)
-  #   user_id = workout["_links"]["user"][0]["id"]
-  #   "http://www.mapmyrun.com/routes/route/?user=#{user_id}"
-  # end
 end
