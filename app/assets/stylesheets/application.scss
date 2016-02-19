@@ -13,3 +13,106 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  font-family: 'Playfair Display', serif;
+}
+
+.btn {
+  color: black;
+}
+
+.logout-button {
+  font-size: 1em;
+  padding: 0 0.5rem;
+  color: black;
+}
+
+.workout-button {
+  font-size:2em;
+  padding: 0 0.5rem;
+  color: black;
+}
+
+.anton {
+  background-image: image-url("Anton.jpg");
+  background-size: cover;
+ }
+
+ .display-name {
+  font-size: 4.5em;
+  text-shadow: black 3px 3px;
+ }
+
+.stats-card {
+  padding: 2px 0px 15px 0px;
+}
+
+.stats-card h5 {
+  margin: 1rem 0 2rem 0;
+  font-size: 2.25rem;
+  text-shadow: 1px 1px black;
+}
+
+ .opaque {
+  background-color: black;
+  opacity: 0.5;
+ }
+
+ .opaque-light {
+  opacity: 0.9;
+ }
+
+.spacer {
+  height: 300px;
+}
+
+.transparent-card {
+  background-color:whitesmoke;
+  opacity:0.95;
+}
+
+thead {
+  font-size:1.8em;
+}
+
+tbody {
+  font-size: 1.5em;
+}
+
+.table-font {
+  font-size: 1.3em;
+}
+
+.custom-container {
+  width: 90%;
+}
+
+.pagination li.active {
+  background-color: grey;
+}
+
+.pagination {
+  background-color: whitesmoke;
+  opacity: 0.9;
+  padding-bottom: 10px;
+}
+
+.pagination a {
+  color: #26a69a;
+  font-size: 2em;
+}
+
+.pagination .material-icons {
+  font-size: 1em;
+}
+
+
+
+
+
+
+
+.spacer-home {
+  height: 700px;
+}

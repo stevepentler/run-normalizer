@@ -1,0 +1,6 @@
+<hr>
+<h5 style="text-decoration:underline;">Lifetime Statistics</h5>
+<h5>Distance: <%= number_with_delimiter(@methods.aggregate_distance , :delimiter => ',') %> miles</h5>
+<h5>Calories: <%= number_with_delimiter(@methods.aggregate_calories , :delimiter => ',') %> calories</h5>
+<h5>Steps: <%= number_with_delimiter(@methods.aggregate_steps , :delimiter => ',') %> steps</h5>
+<h5>Sessions: <%= number_with_delimiter(@methods.aggregate_sessions , :delimiter => ',') %> sessions</h5>

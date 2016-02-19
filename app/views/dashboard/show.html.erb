@@ -1,11 +1,17 @@
-<div class="container center">
-    <h5>Total Distance: <%= @methods.aggregate_distance %> miles</h5>
-    <h5>Total Calories: <%= @methods.aggregate_calories %> calories</h5>
-    <h5>Total Steps: <%= @methods.aggregate_steps %> steps</h5>
-    <h5>Total Sessions: <%= @methods.aggregate_sessions %> sessions</h5>
-    <%= link_to "View Workouts", workouts_path, class: "btn btn-lg btn-default btn-home" %>
-    <h2 class="center"> <%= current_user.display_name %></h2>
-    <h2 class="center"> <%= current_user.email %></h2>
-    <%= link_to "Logout", "/logout", method: :delete, class: "btn btn-lg btn-default btn-home" %>
+<div class="anton">
+  <div class="row center opaque white-text">
+    <div class="col s12 m4 l4 offset-m7 offset-l7">
+      <%= link_to "Logout", "/logout", method: :delete, class: "btn btn-lg btn-default btn-home logout-button"%>
+      <br>
+        <div class="card grey darken-3 stats-card">
+          <h2 class="center display-name"> <%= current_user.display_name %></h2>
+          <br>
+          <%= link_to "View Workouts", workouts_path, class: "btn btn-lg btn-default btn-home", style: "font-size:2em" %>
+          <br>
+          <div class="aggregate-data">
+            <%= render partial: "/dashboard/aggregate_data" %>
+        </div>
+    </div>
+    <div class="spacer"></div>
   </div>
 </div>

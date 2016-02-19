@@ -1,35 +1,44 @@
-<div class="container center">
-  <h1><%= current_user.display_name %>'s Workouts</h1>
-  <table class="bordered highlight centered responsive-table">
-    <thead>
-      <tr>
-          <th data-field="Date">Date</th>
-          <th data-field="Started-At">Started At</th>
-          <th data-field="Distance">Distance</th>
-          <th data-field="Duration">Duration</th>
-          <th data-field="Avg-Speed">Avg-Speed</th>
-          <th data-field="Avg-Pace">Avg-Pace</th>
-          <th data-field="Calories">Calories</th>
-      </tr>
-    </thead>
+<div class="anton">
+  <br>
+  <div class="row opaque-light">
+    <div class="col s12 m10 l10 offset-m1 offset-l1 center transparent-card" 
+      <div class="card">
+        <h1><%= current_user.display_name %>'s workouts</h1>
+        <hr>
+        <table class="bordered highlight centered responsive-table">
+          <thead>
+            <tr>
+                <th data-field="Date">Date</th>
+                <th data-field="Started-At">Started At</th>
+                <th data-field="Distance">Distance</th>
+                <th data-field="Duration">Duration</th>
+                <th data-field="Avg-Speed">Avg-Speed</th>
+                <th data-field="Avg-Pace">Avg-Pace</th>
+                <th data-field="Calories">Calories</th>
+            </tr>
+          </thead>
 
-    <tbody>
-      <% @workouts.each do |workout| %>
-        <tr>
-          <td><%= @methods.format_month(workout)%>-<%= @methods.format_day(workout) %>, 
-              <%= @methods.format_year(workout) %></td>
-          <td><%= @methods.format_hour(workout) %>:<%= @methods.format_minute(workout) %></td>
-          <td><%= @methods.distance(workout) %> miles</td>
-          <td><%= @methods.duration(workout) %></td>
-          <td><%= @methods.average_speed(workout) %> mph</td>
-          <td><%= @methods.average_pace(workout) %></td>
-          <td><%= @methods.calories(workout) %> calories</td>
-        </tr>
-      <% end %> 
-    </tbody>
-  </table>
-</div>
-<div class="center">
-  <%= will_paginate @workouts %>
-  <%= link_to("Dashboard", dashboard_path) %>
+          <tbody>
+            <% @workouts.each do |workout| %>
+              <tr>
+                <td><%= @methods.format_month(workout)%>-<%= @methods.format_day(workout) %>, 
+                    <%= @methods.format_year(workout) %></td>
+                <td><%= @methods.format_hour(workout) %>:<%= @methods.format_minute(workout) %></td>
+                <td><%= @methods.distance(workout) %> miles</td>
+                <td><%= @methods.duration(workout) %></td>
+                <td><%= @methods.average_speed(workout) %> mph</td>
+                <td><%= @methods.average_pace(workout) %></td>
+                <td><%= @methods.calories(workout) %> calories</td>
+              </tr>
+            <% end %> 
+          </tbody>
+        </table>
+      </div>
+  </div>
+
+  <div class="center">
+    <%= will_paginate @workouts %>
+    <%= link_to("Dashboard", dashboard_path, class: "btn btn-lg btn-default btn-home logout-button") %>
+  </div>
+  <br>
 </div>
