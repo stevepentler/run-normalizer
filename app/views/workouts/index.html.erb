@@ -5,34 +5,7 @@
       <div class="card">
         <h1 id="display-name"><%= current_user.display_name %>'s workouts</h1>
         <hr>
-        <table class="bordered highlight centered responsive-table font-color font-outline">
-          <thead>
-            <tr>
-                <th data-field="Date">Date</th>
-                <th data-field="Started-At">Started At</th>
-                <th data-field="Distance">Distance</th>
-                <th data-field="Duration">Duration</th>
-                <th data-field="Avg-Speed">Avg-Speed</th>
-                <th data-field="Avg-Pace">Avg-Pace</th>
-                <th data-field="Calories">Calories</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% @workouts.each do |workout| %>
-              <tr>
-                <td><%= @methods.format_month(workout)%>-<%= @methods.format_day(workout) %>, 
-                    <%= @methods.format_year(workout) %></td>
-                <td><%= @methods.format_hour(workout) %>:<%= @methods.format_minute(workout) %></td>
-                <td><%= link_to @methods.distance(workout), @methods.link_to_route(workout)%> miles</td>
-                <td><%= @methods.duration(workout) %></td>
-                <td><%= @methods.average_speed(workout) %> mph</td>
-                <td><%= @methods.average_pace(workout) %></td>
-                <td><%= @methods.calories(workout) %> calories</td>
-              </tr>
-            <% end %> 
-          </tbody>
-        </table>
+        <%= render partial: "/workouts/workout_table" %>
       </div>
   </div>
 

@@ -1,20 +1,6 @@
 <div class="anton">
   <div class="row center opaque white-text">
-  <div class="col s12 m4 l4 offset-1">
-      <p id="quote">"Running sharpens the focus on life and intensifies the emotions. Is there any better reason to do anything?"<br>-Anton Krupicka</p>
-  </div>
-    <div class="col s12 m4 l4 offset-m3 offset-l3">
-      <%= link_to "Logout", "/logout", method: :delete, class: "btn btn-lg btn-default btn-home logout-button"%>
-      <br>
-        <div class="card grey darken-3 stats-card">
-          <h2 class="center display-name"> <%= current_user.display_name %></h2>
-          <br>
-          <%= link_to "View Workouts", workouts_path, class: "btn btn-lg btn-default btn-home", style: "font-size:2em" %>
-          <br>
-          <div class="aggregate-data">
-            <%= render partial: "/dashboard/aggregate_data" %>
-        </div>
-    </div>
-    <div class="spacer"></div>
+    <%= render partial: "/dashboard/quote" %>
+    <%= render partial: "/dashboard/user_card" %>
   </div>
 </div>
