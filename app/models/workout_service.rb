@@ -67,6 +67,10 @@ class WorkoutService
     data["_embedded"]["workouts"]
   end
 
+  def route_id(workout)
+    workout["_links"]["route"][0]["id"]
+  end
+  
   private
 
   def headers
@@ -77,8 +81,5 @@ class WorkoutService
     workout['aggregates']
   end
 
-  def route_id(workout)
-    workout["_links"]["route"][0]["id"]
-  end
 
 end
