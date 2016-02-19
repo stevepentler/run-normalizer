@@ -24,7 +24,7 @@
                 <td><%= @methods.format_month(workout)%>-<%= @methods.format_day(workout) %>, 
                     <%= @methods.format_year(workout) %></td>
                 <td><%= @methods.format_hour(workout) %>:<%= @methods.format_minute(workout) %></td>
-                <td><%= @methods.distance(workout) %> miles</td>
+                <td><%= link_to @methods.distance(workout), @methods.link_to_route(workout)%> miles</td>
                 <td><%= @methods.duration(workout) %></td>
                 <td><%= @methods.average_speed(workout) %> mph</td>
                 <td><%= @methods.average_pace(workout) %></td>
