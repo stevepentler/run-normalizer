@@ -20,6 +20,7 @@ body {
 
 .btn {
   color: black;
+  background-color: #A9B184;
 }
 
 .logout-button {
@@ -48,15 +49,22 @@ body {
   padding: 2px 0px 15px 0px;
 }
 
-.stats-card h5 {
+#quote {
   margin: 1rem 0 2rem 0;
+  font-size: 1.25rem;
+  text-shadow: 1px 1px black;
+  opacity: 0.5;
+}
+
+.stats-card h5 {
+  margin: 1rem 0 1rem 0;
   font-size: 2.25rem;
   text-shadow: 1px 1px black;
 }
 
  .opaque {
   background-color: black;
-  opacity: 0.5;
+  opacity: 0.6;
  }
 
  .opaque-light {
@@ -70,6 +78,23 @@ body {
 .transparent-card {
   background-color:whitesmoke;
   opacity:0.95;
+  border-radius: 15px;
+}
+
+
+
+
+#display-name {
+  text-shadow: 1.5px 1.5px #616853;
+  color: #49403E;
+}
+
+.font-color {
+  color: #666E6A
+}
+
+.font-outline {
+  text-shadow: 0.5px 0.8px #616853;
 }
 
 thead {
@@ -77,7 +102,7 @@ thead {
 }
 
 tbody {
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 .table-font {

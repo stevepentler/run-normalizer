@@ -13,7 +13,6 @@ class UserSessionsTest < ActionDispatch::IntegrationTest
     
     visit dashboard_path
     assert page.has_content?(user.username)
-    assert page.has_content?(user.email)
     assert page.has_content?("View Workouts")
     assert page.has_content?("miles")
     assert page.has_content?("calories")
@@ -24,7 +23,7 @@ class UserSessionsTest < ActionDispatch::IntegrationTest
     assert_equal workouts_path, current_path
 
     assert page.has_content?(user.username)
-    assert page.has_content?("Workouts")
+    assert page.has_content?("workouts")
     assert page.has_content?("Date")
     assert page.has_content?("Started At")
     assert page.has_content?("Distance")
@@ -43,7 +42,6 @@ class UserSessionsTest < ActionDispatch::IntegrationTest
     
     visit dashboard_path
     assert page.has_content?(user.username)
-    assert page.has_content?(user.email)
 
     click_on "View Workouts"
     assert_equal workouts_path, current_path
