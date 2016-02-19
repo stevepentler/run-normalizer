@@ -25,11 +25,11 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 18 Feb 2016 22:01:03 GMT
+      - Fri, 19 Feb 2016 17:51:08 GMT
       Server:
       - nginx
       X-Mashery-Responder:
-      - prod-j-worker-us-east-1e-117.mashery.com
+      - prod-j-worker-us-east-1d-113.mashery.com
       X-Plan-Qps-Allotted:
       - '25'
       X-Plan-Qps-Current:
@@ -37,9 +37,9 @@ http_interactions:
       X-Plan-Quota-Allotted:
       - '100000'
       X-Plan-Quota-Current:
-      - '231'
+      - '1230'
       X-Plan-Quota-Reset:
-      - Friday, February 19, 2016 12:00:00 AM GMT
+      - Saturday, February 20, 2016 12:00:00 AM GMT
       Content-Length:
       - '16493'
       Connection:
@@ -73,5 +73,5 @@ http_interactions:
         blox","reference_key":null,"start_locale_timezone":"America\/Denver","source":"MapMyRun
         iPhone","source_manufacturer":"mapmyfitness","_links":{"self":[{"href":"\/v7.1\/workout\/344076007\/","id":"344076007"}],"route":[{"href":"\/v7.1\/route\/258596881\/","id":"258596881"}],"activity_type":[{"href":"\/v7.1\/activity_type\/16\/","id":"16"}],"user":[{"href":"\/v7.1\/user\/8695588\/","id":"8695588"}],"privacy":[{"href":"\/v7.1\/privacy_option\/0\/","id":"0"}]},"has_time_series":true,"is_verified":true,"aggregates":{"active_time_total":2048.0,"distance_total":8099.1846144,"speed_max":5.765206656,"steps_total":0.0,"speed_avg":3.9527992064,"elapsed_time_total":2049.0,"metabolic_energy_total":2778176.0}}]},"total_count":107}'
     http_version: 
-  recorded_at: Thu, 18 Feb 2016 22:01:03 GMT
+  recorded_at: Fri, 19 Feb 2016 17:51:08 GMT
 recorded_with: VCR 3.0.1

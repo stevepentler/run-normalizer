@@ -33,6 +33,10 @@ class WorkoutService
     end
   end
 
+  # def route(current_user)
+  #   route = workouts_for(current_user)
+  # end
+
   def duration(workout)
     if parse(workout)['active_time_total']
       total_minutes = (parse(workout)['active_time_total'])*(0.01666667)
@@ -53,6 +57,14 @@ class WorkoutService
     end
   end
 
+  def link_to_route(workout)
+    array = workout["_links"]["route"]
+    if array.nil?
+    else
+      "http://www.mapmyrun.com/routes/view/#{array[0]["id"]}"
+    end
+  end
+
   def workouts_for(current_user)
     response = connection.get("workout/?user=#{current_user.user_id}", headers)
     data = JSON.parse(response.body)
@@ -69,4 +81,12 @@ class WorkoutService
     workout['aggregates']
   end
 
+  def route_id(workout)
+    workout["_links"]["route"][0]["id"]
+  end
+
+  # def get_my_routes_and_courses(workout)
+  #   user_id = workout["_links"]["user"][0]["id"]
+  #   "http://www.mapmyrun.com/routes/route/?user=#{user_id}"
+  # end
 end
