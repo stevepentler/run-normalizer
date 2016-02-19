@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+.anton {
+  background-image: image-url("Anton.jpg");
+  background-size: cover;
+
+ }
+
+.spacer {
+  height: 800px;
+}
