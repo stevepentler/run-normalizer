@@ -5,6 +5,9 @@ require 'webmock'
 require 'vcr'
 require 'minitest-vcr'
 require 'capybara/rails'
+require 'simplecov'
+
+SimpleCov.start
 
 class ActiveSupport::TestCase
   class ActionDispatch::IntegrationTest

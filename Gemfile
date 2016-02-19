@@ -31,5 +31,6 @@ group :test do
   gem 'minitest-vcr'
   gem 'launchy'
   gem 'capybara'
+  gem 'simplecov'
 end
 

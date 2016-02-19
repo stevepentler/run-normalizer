@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class UserSessionsTest < ActionDispatch::IntegrationTest
-  def setup
+  def login
     OmniAuth.config.mock_auth[:mapmyfitness]
   end
 
@@ -35,6 +35,7 @@ class UserSessionsTest < ActionDispatch::IntegrationTest
   end
 
   test "Succesful User Logout" do
+    login
     user = users(:steve)
     
     visit root_path
@@ -53,6 +54,18 @@ class UserSessionsTest < ActionDispatch::IntegrationTest
 
     click_on "Logout"
     assert_equal root_path, current_path
+  end
+
+  test "Unregistered User Attempts to View Dashboard" do
+    visit dashboard_path
+    assert_equal root_path, current_path
+    assert page.has_content?("Please login to access your data")
+  end
+
+  test "Unregistered User Attempts to View Workouts" do
+    visit workouts_path
+    assert_equal root_path, current_path
+    assert page.has_content?("Please login to access your data")
   end
 
 end
