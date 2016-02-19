@@ -1,6 +1,8 @@
 require 'will_paginate/array'
 
 class WorkoutsController < ApplicationController
+  before_action :authorize!
+
   def index
     @methods = WorkoutService.new
     @workouts = @methods.workouts_for(current_user)

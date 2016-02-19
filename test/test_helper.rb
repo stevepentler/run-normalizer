@@ -7,10 +7,10 @@ require 'minitest-vcr'
 require 'capybara/rails'
 
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
+  class ActionDispatch::IntegrationTest
+    include Capybara::DSL
+  end
   fixtures :all
-
-  config.include Capybara::DSL
 
   VCR.configure do |config|
     config.cassette_library_dir = 'test/cassettes'
