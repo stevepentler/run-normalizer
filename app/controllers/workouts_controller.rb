@@ -9,6 +9,4 @@ class WorkoutsController < ApplicationController
                         .paginate(page: params[:page], per_page: 8)
   end
 
-  def show
-  end
 end
