@@ -1,14 +1,15 @@
 class AggregateDataService
   include Formatter
 
-  attr_reader :connection, :aggregate_data
+  attr_reader :connection, :aggregate_data, :current_user
 
   def initialize(current_user)
     @connection = Faraday.new("https://oauth2-api.mapmyapi.com/v7.1/") do |faraday|
-      faraday.headers = headers
+      faraday.headers = headers(current_user)
       faraday.adapter Faraday.default_adapter
     end
     @aggregate_data = aggregate_data_for(current_user)
+    @current_user = current_user
   end
   
   def aggregate_distance
@@ -44,8 +45,8 @@ class AggregateDataService
     "aggregate/?data_types=distance_summary%2C+energy_expended_summary%2C+steps_summary%2C+sessions_summary&end_datetime=2020-05-05&period=P1D&start_datetime=2000-05-05&user_id=#{current_user.user_id}"
   end
 
-  def headers
-    {"User-Agent"=>"Faraday v0.9.2", "Api-Key" => ENV['MMF_API_KEY'], "Authorization" => ENV['AUTH_KEY']}
+  def headers(current_user)
+    {"User-Agent"=>"Faraday v0.9.2", "Api-Key" => ENV['MMF_API_KEY'], "Authorization" => "Bearer #{current_user.token}"}
   end
 
 end
