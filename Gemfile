@@ -16,6 +16,10 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :development, :test do
   gem 'pry'
 end
@@ -33,4 +37,6 @@ group :test do
   gem 'capybara'
   gem 'simplecov'
 end
+
+ruby "2.2.1"
 
