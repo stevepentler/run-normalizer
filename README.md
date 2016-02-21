@@ -1,5 +1,5 @@
 # Run Normalizer App
-This 3 day personal project hits the Map My Fitness API and presents users specific lifetime data (ex: total distance, sessions, calories, and steps) for the user. In addition, the application displays data for each individual workout a user has recorded, with a link to the route on mapmyfitness.com 
+This 3 day personal project hits the Map My Fitness API and presents users specific lifetime data (ex: total distance, sessions, calories, and steps). In addition, the application displays data (ex: avg pace, distance, duration) for each individual workout a user has recorded, with a link to the route on mapmyfitness.com 
 
 --- 
 ##### Features
